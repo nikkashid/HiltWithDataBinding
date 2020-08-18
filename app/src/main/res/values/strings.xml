@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">HiltWithDataBinding</string>
+    <string name="real_name">Real Name</string>
+    <string name="name">Name</string>
+    <string name="team">Team</string>
+    <string name="publisher">Publisher</string>
+    <string name="created_by">Created By</string>
+    <string name="image_of_comic_hero">Image of comic hero.</string>
+</resources>
