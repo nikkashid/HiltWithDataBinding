@@ -4,8 +4,8 @@ import android.util.Log
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.nikhil.hiltwithdatabinding.constants.Constants
 import com.nikhil.hiltwithdatabinding.repositories.HerosRepository
-import com.nikhil.hiltwithdatabinding.responses.HeroResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 class HomeViewModel @ViewModelInject constructor(private val herosRepository: HerosRepository) :
     ViewModel() {
 
-    val serverResponse = MutableLiveData<Any?>()
+    private val serverResponse = MutableLiveData<Any?>()
 
     companion object {
         private const val TAG = "HomeViewModel"
@@ -27,6 +27,7 @@ class HomeViewModel @ViewModelInject constructor(private val herosRepository: He
         Log.d(TAG, "onButtonClick: Button Click Called.")
 
         GlobalScope.launch(Dispatchers.IO) {
+            setResponse(Constants.NETWORK_HIT_INITIATED)
             val response: Any? = getHeros()
             setResponse(response)
         }

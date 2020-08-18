@@ -3,7 +3,7 @@ package com.nikhil.hiltwithdatabinding.dependencyInjection
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.nikhil.hiltwithdatabinding.constants.Constants
+import com.nikhil.hiltwithdatabinding.BuildConfig
 import com.nikhil.hiltwithdatabinding.networkApis.HeroApi
 import dagger.Module
 import dagger.Provides
@@ -25,8 +25,8 @@ object NetworkModule {
     @Provides
     @Singleton
     fun getRequestHeader(): OkHttpClient {
-        val logging: HttpLoggingInterceptor = HttpLoggingInterceptor()
-        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+        val logging = HttpLoggingInterceptor()
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY)
         val httpClient = OkHttpClient.Builder()
         httpClient.addInterceptor { chain ->
             val original = chain.request()
@@ -53,7 +53,7 @@ object NetworkModule {
     @Singleton
     internal fun provideRetrofit(gson: Gson, okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(Constants.BASE_URL)
+            .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()

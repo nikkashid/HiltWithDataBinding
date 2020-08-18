@@ -22,15 +22,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="@{() -> homeViewModel.onButtonClick()}"
-            android:text="Get Data" />
+            android:text="@string/get_data" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_homeRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clickable="true"
+            android:focusable="true"
             android:scrollbars="vertical"
-            android:visibility="visible"
+            android:visibility="gone"
             tools:listitem="@layout/item_heros_list" />
 
     </LinearLayout>

@@ -6,4 +6,6 @@
     <string name="publisher">Publisher</string>
     <string name="created_by">Created By</string>
     <string name="image_of_comic_hero">Image of comic hero.</string>
+    <string name="please_wait">Please Wait…</string>
+    <string name="get_data">Get Data</string>
 </resources>
