@@ -9,9 +9,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -63,13 +61,5 @@ object NetworkModule {
     @Singleton
     fun provideHerosApi(retrofit: Retrofit): HeroApi {
         return retrofit.create(HeroApi::class.java)
-    }
-}
-
-class HttpRequestInterceptor : Interceptor {
-    override fun intercept(chain: Interceptor.Chain): Response {
-        val originalRequest = chain.request()
-        val request = originalRequest.newBuilder().url(originalRequest.url).build()
-        return chain.proceed(request)
     }
 }
